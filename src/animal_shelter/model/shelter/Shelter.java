@@ -2,10 +2,11 @@ package animal_shelter.model.shelter;
 
 import animal_shelter.model.animals.Animal;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Shelter {
+public class Shelter implements Serializable {
     private List<Animal> humanFriends;
     private int animalID = 1;
 

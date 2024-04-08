@@ -1,10 +1,11 @@
 package animal_shelter.model.animals;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Animal {
+public abstract class Animal implements Serializable {
     private int id;
     private String name;
     private LocalDate birthDay;
@@ -12,7 +13,7 @@ public abstract class Animal {
     public String animalType;
     public List<String> commands;
 
-    public Animal(int id, String name, LocalDate birthDay, String color) {
+    public Animal(String name, LocalDate birthDay, String color) {
         this.id = id;
         this.name = name;
         this.birthDay = birthDay;

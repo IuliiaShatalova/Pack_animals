@@ -5,8 +5,8 @@ import java.time.LocalDate;
 public abstract class Pet extends Animal{
     public String type;
 
-    public Pet(int id, String name, LocalDate birthDay, String color) {
-        super(id, name, birthDay, color);
+    public Pet(String name, LocalDate birthDay, String color) {
+        super(name, birthDay, color);
         this.type = "Домашнее животное";
     }
 }
