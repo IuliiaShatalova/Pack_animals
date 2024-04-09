@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Service {
     private Shelter shelter;
     private Builder builder;
+    private int counter = 0;
 
     public Service() {
         shelter = new Shelter();
@@ -28,6 +29,24 @@ public class Service {
         return shelter.commandsOfTheAnimal(id);
     }
 
+    public void learnNewCommand(String command, int id){
+        Animal animal = shelter.findAnimalByID(id);
+        animal.addCommand(command);
+    }
 
+    public void sortByBirthday(){
+        shelter.sortByBirthday();
+    }
 
+    @Override
+    public String toString() {
+        return getAnimalList();
+    }
+
+    public int amountOfAnimalsImTheShelter(){
+        for (Animal animal: shelter){
+            counter++;
+        }
+        return counter;
+    }
 }

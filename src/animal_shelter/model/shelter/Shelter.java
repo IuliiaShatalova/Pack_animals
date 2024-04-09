@@ -4,9 +4,11 @@ import animal_shelter.model.animals.Animal;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class Shelter implements Serializable {
+public class Shelter implements Serializable, Iterable<Animal> {
     private List<Animal> humanFriends;
     private int animalID = 1;
 
@@ -56,4 +58,13 @@ public class Shelter implements Serializable {
         return stringBuilder.toString();
     }
 
+    @Override
+    public Iterator<Animal> iterator() {
+        return new AnimalIterator(humanFriends);
+    }
+
+    public void sortByBirthday(){
+        Collections.sort(humanFriends);
+
+    }
 }

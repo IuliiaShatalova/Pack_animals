@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Animal implements Serializable {
+public abstract class Animal implements Serializable, Comparable<Animal> {
     private int id;
     private String name;
     private LocalDate birthDay;
@@ -99,5 +99,10 @@ public abstract class Animal implements Serializable {
         stringBuilder.append(color);
 
         return stringBuilder.toString();
+    }
+
+    @Override
+    public int compareTo(Animal o) {
+        return this.birthDay.compareTo(o.birthDay);
     }
 }
