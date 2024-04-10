@@ -1,6 +1,5 @@
 package animal_shelter.model.shelter;
 
-import animal_shelter.model.animals.Animal;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -8,24 +7,24 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class Shelter implements Serializable, Iterable<Animal> {
-    private List<Animal> humanFriends;
-    private int animalID = 1;
+public class Shelter<E extends ShelterItem<E>> implements Serializable, Iterable<E> {
+    private List<E> humanFriends;
+    private int animalID;
 
     public Shelter(){
         humanFriends = new ArrayList<>();
     }
 
-    public void addAnimal(Animal animal){
+    public void addAnimal(E animal){
         humanFriends.add(animal);
         animal.setId(animalID++);
     }
 
-    public Animal findAnimalByID(int id){
+    public E findAnimalByID(int id){
         if (!checkId(id)) {
             return null;
         }
-        for (Animal animal: humanFriends){
+        for (E animal: humanFriends){
             if (animal.getId() == id){
                 return animal;
             }
@@ -40,7 +39,7 @@ public class Shelter implements Serializable, Iterable<Animal> {
     public String listOfAnimals(){
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append("Все животные в приюте: ");
-        for (Animal animal: humanFriends){
+        for (E animal: humanFriends){
             stringBuilder.append(animal);
             stringBuilder.append("\n");
         }
@@ -49,18 +48,18 @@ public class Shelter implements Serializable, Iterable<Animal> {
 
     public String commandsOfTheAnimal(int ID){
         StringBuilder stringBuilder = new StringBuilder();
-        Animal animal = findAnimalByID(ID);
+        E animal = findAnimalByID(ID);
         stringBuilder.append("Команды питомца ");
         stringBuilder.append(animal.getName());
         stringBuilder.append("\n");
-        stringBuilder.append(animal.commands);
+        stringBuilder.append(animal.showCommands());
 
         return stringBuilder.toString();
     }
 
     @Override
-    public Iterator<Animal> iterator() {
-        return new AnimalIterator(humanFriends);
+    public Iterator<E> iterator() {
+        return new AnimalIterator<>(humanFriends);
     }
 
     public void sortByBirthday(){

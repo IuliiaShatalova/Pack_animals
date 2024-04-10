@@ -7,12 +7,12 @@ import animal_shelter.model.shelter.Shelter;
 import java.time.LocalDate;
 
 public class Service {
-    private Shelter shelter;
+    private Shelter<Animal> shelter;
     private Builder builder;
     private int counter = 0;
 
     public Service() {
-        shelter = new Shelter();
+        shelter = new Shelter<>();
         builder = new Builder();
     }
 

@@ -1,15 +1,14 @@
 package animal_shelter.model.shelter;
 
-import animal_shelter.model.animals.Animal;
 
 import java.util.Iterator;
 import java.util.List;
 
-public class AnimalIterator implements Iterator<Animal> {
+public class AnimalIterator<E> implements Iterator<E> {
     private int index;
-    private List<Animal> animalList;
+    private List<E> animalList;
 
-    public AnimalIterator(List<Animal> animalList){
+    public AnimalIterator(List<E> animalList){
         this.animalList = animalList;
     }
 
@@ -17,7 +16,7 @@ public class AnimalIterator implements Iterator<Animal> {
     public boolean hasNext() { return index < animalList.size(); }
 
     @Override
-    public Animal next() {
+    public E next() {
         return animalList.get(index++);
     }
 }

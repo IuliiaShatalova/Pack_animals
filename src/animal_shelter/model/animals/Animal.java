@@ -1,11 +1,13 @@
 package animal_shelter.model.animals;
 
+import animal_shelter.model.shelter.ShelterItem;
+
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Animal implements Serializable, Comparable<Animal> {
+public abstract class Animal implements Serializable, Comparable<Animal>, ShelterItem<Animal> {
     private int id;
     private String name;
     private LocalDate birthDay;
@@ -14,7 +16,7 @@ public abstract class Animal implements Serializable, Comparable<Animal> {
     public List<String> commands;
 
     public Animal(String name, LocalDate birthDay, String color) {
-        this.id = id;
+        this.id = -1;
         this.name = name;
         this.birthDay = birthDay;
         this.color = color;
