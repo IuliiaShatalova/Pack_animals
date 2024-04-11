@@ -3,13 +3,16 @@ package animal_shelter.model.service;
 import animal_shelter.model.animals.Animal;
 import animal_shelter.model.animals.builder.Builder;
 import animal_shelter.model.shelter.Shelter;
+import animal_shelter.model.writer.Writable;
 
+import java.io.IOException;
 import java.time.LocalDate;
 
 public class Service {
     private Shelter<Animal> shelter;
     private Builder builder;
     private int counter = 0;
+    private Writable writable;
 
     public Service() {
         shelter = new Shelter<>();
@@ -43,10 +46,31 @@ public class Service {
         return getAnimalList();
     }
 
-    public int amountOfAnimalsImTheShelter(){
+    public String amountOfAnimalsImTheShelter(){
+        StringBuilder stringBuilder = new StringBuilder();
         for (Animal animal: shelter){
             counter++;
         }
-        return counter;
+        stringBuilder.append("Количество животных в приюте = ");
+        stringBuilder.append(counter);
+        return stringBuilder.toString();
+    }
+
+    public boolean checkId(int id) {
+        return shelter.checkId(id);
+    }
+
+    public void setWritable(Writable writable) {
+        this.writable = writable;
+    }
+
+    public boolean save() {
+        String filePath = "src/my_family_tree/model/writer/tree.txt";
+        return writable.save(shelter, filePath);
+    }
+
+    public void load() throws IOException {
+        String filePath = "src/my_family_tree/model/writer/tree.txt";
+        shelter = (Shelter) writable.read(filePath);
     }
 }
