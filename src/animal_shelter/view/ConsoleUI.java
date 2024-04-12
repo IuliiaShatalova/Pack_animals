@@ -22,7 +22,7 @@ public class ConsoleUI implements View{
 
     @Override
     public void start() {
-        System.out.println("Начинаем работу.");
+        System.out.println("Начинаем работу. \n");
         while (work){
             printMenu();
             scanMenu();
@@ -89,13 +89,13 @@ public class ConsoleUI implements View{
         System.out.println("Напишите название команды");
         String command = scanner.nextLine();
         System.out.println("Укажите ID животного");
-        int id = scanner.nextInt();
+        int id = checkId();
         presenter.learnNewCommand(command, id);
     }
 
     public void commandsList() {
         System.out.println("Укажите ID животного");
-        int id = scanner.nextInt();
+        int id = checkId();
         presenter.commandsList(id);
     }
 
@@ -119,6 +119,7 @@ public class ConsoleUI implements View{
     @Override
     public void answer(String answer) {
         System.out.println(answer);
+        System.out.println("\n");
     }
 
     public void setWritable(Writable writable){

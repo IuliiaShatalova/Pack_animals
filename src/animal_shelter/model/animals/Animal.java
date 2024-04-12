@@ -20,8 +20,8 @@ public abstract class Animal implements Serializable, Comparable<Animal>, Shelte
         this.name = name;
         this.birthDay = birthDay;
         this.color = color;
-        this.animalType = "Неопознанный зверь";
         this.commands = new ArrayList<>();
+        this.animalType = "Животное";
     }
 
     public int getId() {

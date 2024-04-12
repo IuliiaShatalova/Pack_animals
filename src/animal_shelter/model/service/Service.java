@@ -64,13 +64,11 @@ public class Service {
         this.writable = writable;
     }
 
-    public boolean save() {
-        String filePath = "src/my_family_tree/model/writer/tree.txt";
-        return writable.save(shelter, filePath);
+    public void save() {
+        writable.save(shelter, "Test.data");
     }
 
     public void load() throws IOException {
-        String filePath = "src/my_family_tree/model/writer/tree.txt";
-        shelter = (Shelter) writable.read(filePath);
+        shelter = (Shelter) writable.read("Test.data");
     }
 }

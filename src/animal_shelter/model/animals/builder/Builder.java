@@ -8,7 +8,9 @@ public class Builder {
     public Animal build(String name, LocalDate birthDay, String color, String type){
         switch (type) {
             case "dog" -> { return new Dog(name, birthDay, color);}
-            case "cat" -> { return new Cat(name, birthDay, color);}
+            case "cat" -> {
+                return new Cat(name, birthDay, color);
+            }
             case "hamster" -> { return new Hamster(name, birthDay, color);}
             case "horse" -> { return new Horse(name, birthDay, color);}
             case "camel" -> { return new Camel(name, birthDay, color);}
